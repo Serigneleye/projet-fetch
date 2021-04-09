@@ -1,9 +1,10 @@
-<script>
+
     function affichage(tab) 
     {
-        var x;
-            for (i in tab){
-                x = document.getElementById("container").innerHTML +=
+        var x = document.getElementsByClassName("container")
+            for (let i= 0; i<100; i++){
+
+                x[0].innerHTML +=
                 "<div class='card'>" +
                     "<a href='#'></a>" + 
                     "<a href='#'>" +
@@ -15,12 +16,13 @@
                     "</h2>"+
                 "</div>"}
             
-            return x;
     }
         
-    fetch("https://jsonplaceholder.typicode.com/photos")
-       .then(response => response.json())
-       .then(donnees => affichage(donnees));
+    let url = "https://jsonplaceholder.typicode.com/photos"
+    fetch(url).then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        affichage(json)
+      });
        
   
-</script>
